@@ -1,0 +1,10 @@
+# Quarto
+/.quarto/
+/_site/
+/_freeze/
+*.html
+*.pdf
+*.typ
+
+# Julia
+.cache/
