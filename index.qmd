@@ -3,6 +3,7 @@ title: "Lab 11: Pareto Fronts"
 subtitle: "CEVE 421/521"
 date: 2026-04-17
 engine: julia
+status: draft
 
 format:
   html:
@@ -10,7 +11,9 @@ format:
     toc-depth: 2
     code-block-bg: "#f8f8f8"
     code-block-border-left: "#e1e4e5"
-    theme: simplex
+    theme:
+      - simplex
+      - _assets/sass/custom.scss
     number-sections: true
     fig-format: svg
   typst:
@@ -31,6 +34,7 @@ code-line-numbers: false
 code-block-font-size: "0.85em"
 ---
 
+
 ## Overview
 
 
@@ -39,6 +43,7 @@ Lab objectives and context - to be written.
 ## Setup
 
 ```{julia}
+#| output: false
 if !isfile("Manifest.toml")
     using Pkg
     Pkg.instantiate()
@@ -54,5 +59,4 @@ Exercise description - to be written.
 
 ```{julia}
 # Your code here
-# Solution code will go here
 ```
