@@ -44,8 +44,21 @@ Lab objectives and context - to be written.
 
 ```{julia}
 #| output: false
-if !isfile("Manifest.toml")
-    using Pkg
+using Pkg
+try
+    # Activate the local project
+    Pkg.activate(@__DIR__)
+
+    # Check if Manifest exists, if not instantiate
+    if !isfile(joinpath(@__DIR__, "Manifest.toml"))
+        Pkg.instantiate()
+    else
+        # Try to resolve any inconsistencies
+        Pkg.resolve()
+    end
+catch e
+    @warn "Package environment setup failed, attempting recovery" exception=e
+    Pkg.activate(@__DIR__)
     Pkg.instantiate()
 end
 ```
