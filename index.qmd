@@ -44,23 +44,28 @@ Lab objectives and context - to be written.
 
 ```{julia}
 #| output: false
-using Pkg
+# install SimOptDecisions and ICOW
 try
-    # Activate the local project
-    Pkg.activate(@__DIR__)
-
-    # Check if Manifest exists, if not instantiate
-    if !isfile(joinpath(@__DIR__, "Manifest.toml"))
-        Pkg.instantiate()
-    else
-        # Try to resolve any inconsistencies
-        Pkg.resolve()
+    using SimOptDecisions
+    using ICOW
+catch
+    import Pkg
+    try
+        Pkg.rm("SimOptDecisions")
+    catch
     end
-catch e
-    @warn "Package environment setup failed, attempting recovery" exception=e
-    Pkg.activate(@__DIR__)
+    try
+        Pkg.rm("ICOW")
+    catch
+    end
+    Pkg.add(; url="https://github.com/dossgollin-lab/SimOptDecisions")
+    Pkg.add(; url="https://github.com/dossgollin-lab/ICOW.jl")
     Pkg.instantiate()
+    using SimOptDecisions
+    using ICOW
 end
+using ICOW.Stochastic
+using ICOW.EAD
 ```
 
 ## Exercises
