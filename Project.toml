@@ -1,2 +1,4 @@
 [deps]
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+ICOW = "3f0c05cb-d2a1-4c03-b976-c0e1c11e0dd4"
+SimOptDecisions = "8764eb7a-9599-4112-a7c7-9b4115e89f97"

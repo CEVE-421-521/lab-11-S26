@@ -44,10 +44,28 @@ Lab objectives and context - to be written.
 
 ```{julia}
 #| output: false
-if !isfile("Manifest.toml")
-    using Pkg
+# install SimOptDecisions and ICOW
+try
+    using SimOptDecisions
+    using ICOW
+catch
+    import Pkg
+    try
+        Pkg.rm("SimOptDecisions")
+    catch
+    end
+    try
+        Pkg.rm("ICOW")
+    catch
+    end
+    Pkg.add(; url="https://github.com/dossgollin-lab/SimOptDecisions")
+    Pkg.add(; url="https://github.com/dossgollin-lab/ICOW.jl")
     Pkg.instantiate()
+    using SimOptDecisions
+    using ICOW
 end
+using ICOW.Stochastic
+using ICOW.EAD
 ```
 
 ## Exercises
